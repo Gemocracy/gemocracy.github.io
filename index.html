@@ -77,6 +77,72 @@
             color: white;
         }
         
+        /* Hamburger Menu Styles */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 5px;
+            z-index: 1001;
+        }
+        
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #2d3748;
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+        
+        /* Mobile Responsive Styles */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+            
+            .nav-menu {
+                display: flex;
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background-color: white;
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+                padding: 20px 0;
+                z-index: 1000;
+                height: calc(100vh - 70px);
+                overflow-y: auto;
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-link {
+                display: block;
+                margin: 10px 0;
+                padding: 15px;
+                border-radius: 0;
+                width: 100%;
+            }
+            
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(-45deg) translate(-5px, 6px);
+            }
+            
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(45deg) translate(-5px, -6px);
+            }
+        }
+        
         /* 页面容器 */
         .page-container {
             padding: 30px;
@@ -377,11 +443,19 @@
     <nav class="navbar">
         <div class="nav-container">
             <a href="#" class="logo" onclick="showPage('home')"><span class="regem">Regem</span><span class="x">X</span></a>
+            
+            <!-- Hamburger Menu Button (Mobile Only) -->
+            <div class="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            
             <ul class="nav-menu">
-                <li><a class="nav-link active" onclick="showPage('home')">Home</a></li>
-                <li><a class="nav-link" onclick="showPage('Advice')">Advice</a></li>
-                <li><a class="nav-link" onclick="showPage('team')">Team</a></li>
-                <li><a class="nav-link" onclick="showPage('contact')">Contact</a></li>
+                <li><a class="nav-link active" onclick="showPage('home', event)">Home</a></li>
+                <li><a class="nav-link" onclick="showPage('Advice', event)">Advice</a></li>
+                <li><a class="nav-link" onclick="showPage('team', event)">Team</a></li>
+                <li><a class="nav-link" onclick="showPage('contact', event)">Contact</a></li>
             </ul>
         </div>
     </nav>
@@ -524,7 +598,7 @@
     
     <script>
         // 页面切换功能
-        function showPage(pageId) {
+        function showPage(pageId, event) {
             // 隐藏所有页面
             document.querySelectorAll('.page').forEach(page => {
                 page.classList.remove('active');
@@ -539,13 +613,40 @@
             });
             
             // 设置当前页面链接为激活状态
-            event.target.classList.add('active');
+            if (event && event.target) {
+                event.target.classList.add('active');
+            }
+            
+            // 在移动端点击链接后关闭菜单
+            if (window.innerWidth <= 768) {
+                toggleMenu();
+            }
+        }
+        
+        // 汉堡菜单切换功能
+        function toggleMenu() {
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+            
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
         }
         
         // 默认显示首页
         window.onload = function() {
             showPage('home');
         }
+        
+        // 窗口大小改变时检查是否需要隐藏菜单
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                const hamburger = document.querySelector('.hamburger');
+                const navMenu = document.querySelector('.nav-menu');
+                
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            }
+        });
     </script>
 </body>
 </html>
