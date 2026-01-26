@@ -1,0 +1,217 @@
+# ==========================================
+# RuleGems 宝石配置文件
+# ==========================================
+# 你可以在 gems 文件夹中创建多个配置文件
+# 也可以在子文件夹中添加配置文件
+# 插件会递归读取所有 .yml 文件中的宝石配置
+# ==========================================
+
+# 正义宝石 - 限制5次的jail指令
+justice:
+  material: AMETHYST_BLOCK
+  name: "&dJustice Gem"
+  count: 1
+  mutual_exclusive: []
+  lore:
+    - "&eAvailable Command:"
+    - "&a/rgjail <player> [prison] [duration]"
+    - "&7Uses Remaining: &c100"
+    - "&7Cooldown: &660 seconds"
+    - "Other command: jailedit & jaillist"
+  enchanted: true
+  redeem_title: ["&d%player% has redeemed the Justice Gem", "&eJustice is now in your hands!"]
+  particle: ENCHANTMENT_TABLE
+  sound: BLOCK_AMETHYST_BLOCK_RESONATE
+  permissions:
+    - "cmi.command.jailedit"
+    - "cmi.command.jaillist"
+    - "cmi.select"
+    - "cmi.command.unjail"
+  command_allows:
+    - command: "/rgjail"
+      execute:
+        - "console:cmi jail %arg1% %arg2|jailed% %arg3|5m%"
+      time_limit: 100
+      cooldown: 60
+  # 可选：为这个宝石设置单独的生成范围
+  # 如果不设置，将使用 config.yml 中的默认范围
+  # random_place_range:
+  #   world: world
+  #   corner1: { x: -50, y: 160, z: -50 }
+  #   corner2: { x: 50, y: 30, z: 50 }
+  on_pickup:
+    commands: []
+    sound: BLOCK_AMETHYST_BLOCK_RESONATE
+    particle: ENCHANTMENT_TABLE
+  on_scatter:
+    commands: []
+    sound: ENTITY_WITHER_SKELETON_DEATH
+    particle: PORTAL
+  on_redeem:
+    commands: []
+    sound: ENTITY_ENDER_DRAGON_GROWL
+    particle: DRAGON_BREATH
+
+# 真相宝石 - CoreProtect检查权限
+truth:
+  material: DIAMOND_BLOCK
+  name: "&bTruth Gem"
+  count: 1
+  mutual_exclusive: []
+  lore:
+    - "&eGrants Permissions:"
+    - "&a/co inspect &7- Inspection mode"
+    - "&a/co lookup &7- Lookup records"
+    - "&7Uses: &aUnlimited"
+  enchanted: true
+  redeem_title: ["&b%player% has redeemed the Truth Gem", "&eThe truth shall be revealed to you!"]
+  particle: GLOW
+  sound: BLOCK_SCULK_SENSOR_CLICKING
+  permissions:
+    - "coreprotect.inspect"
+    - "coreprotect.lookup"
+  command_allows: []
+  on_pickup:
+    commands: []
+    sound: BLOCK_SCULK_SENSOR_CLICKING
+    particle: GLOW
+  on_scatter:
+    commands: []
+    sound: ENTITY_ALLAY_DEATH
+    particle: SOUL
+  on_redeem:
+    commands: []
+    sound: BLOCK_BEACON_ACTIVATE
+    particle: END_ROD
+
+# 飞行宝石 - 限次Console执行的限时飞行
+flight:
+  material: QUARTZ_BLOCK
+  name: "&eFlight Gem"
+  count: 1
+  mutual_exclusive: []
+  lore:
+    - "&eAvailable Command:"
+    - "&a/tempfly &7- 60-second flight"
+    - "&7Uses Remaining: &c100"
+    - "&7Cooldown: &6300 seconds"
+  enchanted: true
+  redeem_title: ["&e%player% has redeemed the Flight Gem", "&bSpread your wings and soar!"]
+  particle: CLOUD
+  sound: ENTITY_ENDER_DRAGON_FLAP
+  permissions: []
+  command_allows:
+    - command: "/tempfly"
+      execute:
+        - "console:cmi tfly %player% 60"
+        - "console:tellraw %player% {\"text\":\"✈ You have gained 60 seconds of flight!\",\"color\":\"green\"}"
+      time_limit: 100
+      cooldown: 300
+  on_pickup:
+    commands: []
+    sound: ENTITY_ENDER_DRAGON_FLAP
+    particle: CLOUD
+  on_scatter:
+    commands: []
+    sound: ENTITY_PHANTOM_DEATH
+    particle: POOF
+  on_redeem:
+    commands: []
+    sound: ENTITY_BAT_TAKEOFF
+    particle: FIREWORK
+
+# 生命宝石 - Heal权限
+life:
+  material: REDSTONE_BLOCK
+  name: "&cLife Gem"
+  count: 1
+  mutual_exclusive: []
+  lore:
+    - "&eGrants Permission:"
+    - "&a/heal &7- Restore health"
+    - "&7Uses: &aUnlimited"
+  enchanted: true
+  redeem_title: ["&c%player% has redeemed the Life Gem", "&eThe power of life flows through you!"]
+  particle: HEART
+  sound: BLOCK_BEACON_POWER_SELECT
+  permissions:
+    - "cmi.command.heal"
+    - "cmi.command.heal.others"
+  command_allows: []
+  on_pickup:
+    commands: []
+    sound: BLOCK_BEACON_POWER_SELECT
+    particle: HEART
+  on_scatter:
+    commands: []
+    sound: ENTITY_ZOMBIE_VILLAGER_DEATH
+    particle: DAMAGE_INDICATOR
+  on_redeem:
+    commands: []
+    sound: ENTITY_PLAYER_LEVELUP
+    particle: TOTEM
+
+# experimental
+lead_assassin:
+  material: BLACKSTONE
+  name: "&8Lead Assassin"
+  count: 1
+  mutual_exclusive: []
+  lore:
+    - "&eAppoint assassins"
+    - "&a/rg appoint assassin <player>"
+    - "&7/rg dismiss assassin <player>"
+  enchanted: false
+  redeem_title: ["&8%player% now can appoint Assassins", "&eUse your power wisely!"]
+  particle: SMOKE
+  power: "lead_assassin"
+  on_pickup:
+    commands: []
+    sound: ENTITY_SKELETON_AMBIENT
+    particle: SMOKE
+  on_scatter:
+    commands: []
+    sound: ENTITY_SPIDER_DEATH
+    particle: CLOUD
+  on_redeem:
+    commands: []
+    sound: ENTITY_PLAYER_LEVELUP
+    particle: SWEEP_ATTACK
+
+navigation: 
+  material: LODESTONE
+  name: "&aNavigation Gem"
+  count: 1
+  mutual_exclusive: []
+  lore:
+    - "&eNavigate the gems with compass"
+  enchanted: true
+  redeem_title: ["&a%player% has redeemed the Navigation Gem", "&eFind your way with ease!"]
+  particle: END_ROD
+  sound: ITEM_CHORUS_FRUIT_TELEPORT
+  permissions:
+    - "rulegems.navigate"
+  command_allows: []
+  on_pickup:
+    commands: []
+    sound: ITEM_CHORUS_FRUIT_TELEPORT
+    particle: END_ROD
+
+land:
+  material: BARREL
+  name: "&aLand Gem"
+  count: 1
+  mutual_exclusive: []
+  lore:
+    - "&aManage lands"
+    - "&a/lands admin"
+  enchanted: true
+  redeem_title: ["&a%player% has redeemed the Land Gem", "&eManage the Land!"]
+  particle: VILLAGER_HAPPY
+  sound: ENTITY_EXPERIENCE_ORB_PICKUP
+  power: "landadmin"
+  command_allows: []
+  on_pickup:
+    commands: []
+    sound: BLOCK_NOTE_BLOCK_CHIME
+    particle: VILLAGER_HAPPY

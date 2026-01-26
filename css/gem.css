@@ -1,0 +1,179 @@
+/* GEM CSS - CENTERPIECE MODE */
+
+/* No wrapper needed here, positioning handled by #world */
+
+/* RINGS */
+.ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* Base centering */
+    border-radius: 50%;
+    border-style: solid;
+    transform-style: preserve-3d;
+    pointer-events: none;
+}
+
+.ring-x {
+    width: 250px;
+    height: 250px;
+    border: 1px solid rgba(255, 50, 50, 0.6);
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.2);
+    animation: spinX 15s linear infinite;
+}
+
+.ring-y {
+    width: 200px;
+    height: 200px;
+    border: 1px solid rgba(255, 100, 100, 0.4);
+    animation: spinY 20s linear infinite reverse;
+}
+
+.ring-z {
+    width: 160px;
+    height: 160px;
+    border: 1px dashed rgba(255, 255, 255, 0.2);
+    animation: spinZ 10s linear infinite;
+}
+
+@keyframes spinX {
+    from {
+        transform: translate(-50%, -50%) rotateX(0deg);
+    }
+
+    to {
+        transform: translate(-50%, -50%) rotateX(360deg);
+    }
+}
+
+@keyframes spinY {
+    from {
+        transform: translate(-50%, -50%) rotateY(0deg);
+    }
+
+    to {
+        transform: translate(-50%, -50%) rotateY(360deg);
+    }
+}
+
+@keyframes spinZ {
+    from {
+        transform: translate(-50%, -50%) rotateZ(0deg);
+    }
+
+    to {
+        transform: translate(-50%, -50%) rotateZ(360deg);
+    }
+}
+
+/* CUBES */
+.cube {
+    position: absolute;
+    /* Centering logic: The face translation handles the size */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transform-style: preserve-3d;
+}
+
+/* 1. Wireframe Outer Cage */
+.cube.wireframe {
+    width: 120px;
+    height: 120px;
+    animation: counterSpin 25s linear infinite;
+}
+
+.cube.wireframe .face {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    border: 1px solid rgba(255, 50, 50, 0.4);
+    background: rgba(255, 0, 0, 0.02);
+}
+
+/* Distances */
+.cube.wireframe .front {
+    transform: rotateY(0deg) translateZ(60px);
+}
+
+.cube.wireframe .back {
+    transform: rotateY(180deg) translateZ(60px);
+}
+
+.cube.wireframe .right {
+    transform: rotateY(90deg) translateZ(60px);
+}
+
+.cube.wireframe .left {
+    transform: rotateY(-90deg) translateZ(60px);
+}
+
+.cube.wireframe .top {
+    transform: rotateX(90deg) translateZ(60px);
+}
+
+.cube.wireframe .bottom {
+    transform: rotateX(-90deg) translateZ(60px);
+}
+
+/* 2. Solid Inner Core */
+.cube.solid {
+    width: 60px;
+    height: 60px;
+    animation: innerSpin 10s linear infinite;
+}
+
+.cube.solid .face {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background: rgba(229, 62, 62, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 40px rgba(255, 0, 0, 0.6);
+}
+
+/* Distances */
+.cube.solid .front {
+    transform: rotateY(0deg) translateZ(30px);
+}
+
+.cube.solid .back {
+    transform: rotateY(180deg) translateZ(30px);
+}
+
+.cube.solid .right {
+    transform: rotateY(90deg) translateZ(30px);
+}
+
+.cube.solid .left {
+    transform: rotateY(-90deg) translateZ(30px);
+}
+
+.cube.solid .top {
+    transform: rotateX(90deg) translateZ(30px);
+}
+
+.cube.solid .bottom {
+    transform: rotateX(-90deg) translateZ(30px);
+}
+
+@keyframes counterSpin {
+    0% {
+        transform: translate(-50%, -50%) rotateY(0deg) rotateX(0deg);
+    }
+
+    100% {
+        transform: translate(-50%, -50%) rotateY(-360deg) rotateX(-360deg);
+    }
+}
+
+@keyframes innerSpin {
+    0% {
+        transform: translate(-50%, -50%) rotateY(0deg) rotateZ(0deg);
+    }
+
+    100% {
+        transform: translate(-50%, -50%) rotateY(360deg) rotateZ(360deg);
+    }
+}
