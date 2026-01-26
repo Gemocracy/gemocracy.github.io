@@ -456,4 +456,44 @@ h2 {
     .tt-desc {
         font-size: 0.8rem;
     }
+
+    /* Better spacing for mobile */
+    .content-box {
+        transform: translateY(-80px);
+        /* Move content up more to clear dock */
+    }
+}
+
+/* SHORT SCREENS (Small phones) */
+@media (max-height: 750px) {
+    #dock-container {
+        height: 180px;
+        /* Smaller dock */
+    }
+
+    .slider-nav {
+        bottom: 220px;
+        /* Follow dock down */
+    }
+
+    h1.logo {
+        font-size: 2.8rem;
+        /* Smaller logo */
+    }
+
+    .subtitle {
+        margin-bottom: 15px;
+        margin-top: 5px;
+    }
+
+    .content-box {
+        transform: translateY(-60px);
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    .server-ip {
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
 }
