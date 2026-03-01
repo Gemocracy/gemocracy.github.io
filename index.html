@@ -30,6 +30,7 @@
         <div class="dot" onclick="goToSlide(2)"></div>
         <div class="dot" onclick="goToSlide(3)"></div>
         <div class="dot" onclick="goToSlide(4)"></div>
+        <div class="dot" onclick="goToSlide(5)"></div>
     </div>
 
     <!-- SLIDER WRAPPER -->
@@ -45,9 +46,9 @@
                         MC.GEMOCRACY.ORG
                     </div>
                     <div class="social-links" style="margin-top:30px">
-                        <a href="https://discord.gg/WWQSppxDWa" target="_blank" class="btn"><i
+                        <a href="https://discord.gg/twSjTsKtpU" target="_blank" class="btn"><i
                                 class="fab fa-discord"></i> Discord</a>
-                        <a href="https://github.com/RegemX" target="_blank" class="btn"><i class="fab fa-github"></i>
+                        <a href="https://github.com/Gemocracy" target="_blank" class="btn"><i class="fab fa-github"></i>
                             Github</a>
                         <a href="https://qm.qq.com/q/caVZGSf8VG" target="_blank" class="btn"><i class="fab fa-qq"></i>
                             QQ</a>
@@ -121,7 +122,7 @@
                         </div>
                         <div class="card">
                             <img src="./images/TANGUMM.png">
-                            <h3>XNTX</h3>
+                            <h3>Aoao</h3>
                             <p>Owner</p>
                         </div>
                         <div class="card">
@@ -143,6 +144,27 @@
                             <p>Owner</p>
                         </div>
                     </div>
+                </div>
+            </div>
+            <!-- MAP -->
+            <div class="slide">
+                <div class="content-box">
+                    <h2>MAP</h2>
+                    <div class="map-container">
+                        <div class="map-loading">
+                            <div class="loading-spinner"></div>
+                            <p>Loading live map...</p>
+                        </div>
+                        <iframe 
+                            src="http://mc.Gemocracy.org:12001/" 
+                            class="live-map" 
+                            frameborder="0"
+                            allowfullscreen
+                            onload="this.previousElementSibling.style.display='none'"
+                            onerror="this.previousElementSibling.innerHTML='<p style=\"color:#e53e3e\">Failed to load map</p>'"
+                        ></iframe>
+                    </div>
+                    <p class="map-description">Explore the server world in real-time</p>
                 </div>
             </div>
 

@@ -496,7 +496,84 @@ h2 {
 
     .server-ip {
         padding: 10px 20px;
-        font-size: 1rem;
+        font-size: 1rem
+    }
+}
+
+/* MAP STYLES */
+.map-container {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.live-map {
+    width: 100%;
+    height: 600px;
+    border: none;
+    background: #1a1a1a;
+    display: block;
+}
+
+.map-loading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    z-index: 10;
+}
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top: 3px solid #e53e3e;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 15px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.map-description {
+    text-align: center;
+    color: #aaa;
+    font-size: 1rem;
+    margin-top: 15px;
+    font-style: italic;
+}
+
+/* RESPONSIVE MAP */
+@media (max-width: 768px) {
+    .live-map {
+        height: 400px;
+    }
+    
+    .map-container {
+        margin: 0 10px;
+    }
+}
+
+@media (max-height: 750px) {
+    .live-map {
+        height: 350px;
+    }
+};
     }
 }
 
