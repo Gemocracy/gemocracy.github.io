@@ -45,7 +45,7 @@
                     <div class="server-ip" onclick="copyIP()">
                         MC.GEMOCRACY.ORG
                     </div>
-                    <div class="social-links" style="margin-top:30px">
+                    <div class="social-links" style="margin-top:40px">
                         <a href="https://discord.gg/twSjTsKtpU" target="_blank" class="btn"><i
                                 class="fab fa-discord"></i> Discord</a>
                         <a href="https://github.com/Gemocracy" target="_blank" class="btn"><i class="fab fa-github"></i>
@@ -56,22 +56,19 @@
                 </div>
             </div>
 
-            <!-- PHILOSOPHY -->
+            <!-- PHILOSOPHY / THE META -->
             <div class="slide">
                 <div class="content-box">
                     <h2>THE META</h2>
-                    <div style="font-size: 1.1rem; line-height: 1.8; color: #ddd;">
+                    <div style="font-size: 1.2rem; line-height: 1.8; color: #ddd;">
+                        <p style="margin-bottom: 30px; border-left: 3px solid #e53e3e; padding-left: 20px;">
+                            <em>"Law is not given, it is taken. Trust is currency. Hacking is termination."</em>
+                        </p>
                         <p style="margin-bottom: 25px;">
                             <strong>PHYSICAL POWER</strong><br>
                             Anarchy usually means no rules. Here, <span style="color: #fff;">you are the rules</span>.
-                            We turned server permissions into physical items. Power is something you can find, steal,
-                            and lose.
-                        </p>
-                        <p style="margin-bottom: 25px;">
-                            <strong>THE 7 GEMS</strong><br>
-                            <span style="color: #e53e3e; font-weight: 600;">7 Ancient Gems</span> exist in the world,
-                            each granting specific administrative powers.
-                            They are scarce. They are the only law. And they are scattered in the wilderness.
+                            Server permissions have been forged into physical items. Power is something you can find,
+                            steal, and lose.
                         </p>
                         <p>
                             <strong>ETERNAL REVOLUTION</strong><br>
@@ -83,17 +80,35 @@
                 </div>
             </div>
 
-            <!-- FEATURES -->
+            <!-- FEATURES / SYSTEMS -->
             <div class="slide">
                 <div class="content-box">
-                    <h2>FEATURES</h2>
-                    <ul class="feature-list">
-                        <li><strong>THE 7 CROWNS</strong> - Find the Gems. Become the Admin. Lose it all.</li>
-                        <li><strong>EMPIRE BUILDING</strong> - Claim your land. Build your fortress. Defend your legacy.
-                        </li>
-                        <li><strong>THE METRO</strong> - A player-built underground highway connecting the chaos.</li>
-                        <li><strong>RAW SURVIVAL</strong> - No TP. No Home. No Mercy. Just you and the world.</li>
-                    </ul>
+                    <h2>SYSTEMS</h2>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <i class="fas fa-gem feature-icon"></i>
+                            <h3>The 7 Gems</h3>
+                            <p>Find the Gems. Become the Admin. Lose it all. Use <code>rg gui</code> to manage your
+                                power.</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-flag feature-icon"></i>
+                            <h3>Empire Building</h3>
+                            <p>Claim your land. Build your fortress. Defend your legacy. Use <code>/l</code> to manage
+                                claims.</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-train feature-icon"></i>
+                            <h3>The Metro</h3>
+                            <p>A player-built underground highway connecting the chaos. Use <code>/m gui</code> for the
+                                map.</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-skull feature-icon"></i>
+                            <h3>Raw Survival</h3>
+                            <p>No TP. No Home. No Mercy. Just you, the world, and the rules you dictate.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -110,38 +125,38 @@
                 </div>
             </div>
 
-            <!-- TEAM -->
+            <!-- THE ARCHITECTS -->
             <div class="slide">
                 <div class="content-box">
-                    <h2>TEAM</h2>
+                    <h2>THE ARCHITECTS</h2>
+                    <p style="color: #aaa; margin-top: -20px; margin-bottom: 30px; font-style: italic;">
+                        The world is governed by code. We just wrote it.
+                    </p>
                     <div class="team-grid">
                         <div class="card">
                             <img src="https://angushushu.com/images/favicon32.ico">
                             <h3>Angushushu</h3>
-                            <p>Owner</p>
+                            <p>Architect</p>
                         </div>
                         <div class="card">
-                            <img src="./images/TANGUMM.png">
+                            <img src="./images/TANGUMM.png" onerror="this.src='./images/icon.png'">
                             <h3>Aoao</h3>
-                            <p>Owner</p>
+                            <p>Architect</p>
                         </div>
                         <div class="card">
-                            <div class="placeholder">
-                                ?</div>
+                            <div class="placeholder">?</div>
                             <h3>Addy</h3>
-                            <p>Owner</p>
+                            <p>Architect</p>
                         </div>
                         <div class="card">
-                            <div class="placeholder">
-                                ?</div>
+                            <div class="placeholder">?</div>
                             <h3>Henrynph</h3>
-                            <p>Owner</p>
+                            <p>Architect</p>
                         </div>
                         <div class="card">
-                            <div class="placeholder">
-                                ?</div>
+                            <div class="placeholder">?</div>
                             <h3>oneflyfish</h3>
-                            <p>Owner</p>
+                            <p>Architect</p>
                         </div>
                     </div>
                 </div>
@@ -150,21 +165,15 @@
             <div class="slide">
                 <div class="content-box">
                     <h2>MAP</h2>
-                    <div class="map-container">
-                        <div class="map-loading">
-                            <div class="loading-spinner"></div>
-                            <p>Loading live map...</p>
+                    <div class="map-card-wrapper">
+                        <img src="./images/Earth37k.png" alt="Gemocracy Map" class="map-bg-image">
+                        <div class="map-overlay">
+                            <h3>Live World Map</h3>
+                            <a href="http://mc.Gemocracy.org:12001/" target="_blank" class="map-btn">
+                                OPEN IN NEW TAB <i class="fas fa-external-link-alt"></i>
+                            </a>
                         </div>
-                        <iframe 
-                            src="http://mc.Gemocracy.org:12001/" 
-                            class="live-map" 
-                            frameborder="0"
-                            allowfullscreen
-                            onload="this.previousElementSibling.style.display='none'"
-                            onerror="this.previousElementSibling.innerHTML='<p style=\"color:#e53e3e\">Failed to load map</p>'"
-                        ></iframe>
                     </div>
-                    <p class="map-description">Explore the server world in real-time</p>
                 </div>
             </div>
 
