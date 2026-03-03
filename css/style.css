@@ -434,12 +434,69 @@ h2 {
         font-size: 2rem;
     }
 
+    /* SLIDER & SCROLLING PARADIGM OVERRIDE */
+    /* Each slide stays at 100vh, but has internal vertical scrolling.
+       This preserves the horizontal slider JS while allowing long content. */
+    #slider-wrapper {
+        overflow: hidden;
+        /* Keep horizontal clipping for slides */
+    }
+
+    .slider-track {
+        height: 100vh;
+    }
+
+    .slide {
+        display: flex;
+        flex-direction: column;
+        /* Stack content top-to-bottom */
+        align-items: center;
+        justify-content: flex-start;
+        /* Start from top, don't center */
+        height: 100vh !important;
+        /* Fixed height for slider */
+        overflow-y: auto !important;
+        /* Scroll inside the slide */
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+        padding-top: 100px;
+        padding-bottom: 280px;
+        /* Clear the nav dots + dock */
+        box-sizing: border-box;
+    }
+
     /* LAYOUT */
     .content-box {
-        padding: 30px 20px;
-        width: 90%;
+        padding: 20px 15px;
+        width: 100%;
+        max-width: 95%;
+        box-sizing: border-box;
+        margin: 0 auto;
+        /* Keep it centered horizontally */
         text-shadow: 0 2px 5px rgba(0, 0, 0, 1);
-        /* Stronger shadow for mobile readability */
+        transform: none;
+        /* Strip out any vertical transform completely */
+        max-height: none;
+        /* Let it grow naturally */
+        overflow-y: visible;
+    }
+
+
+
+    .content-box h2 {
+        font-size: 1.6rem;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+    }
+
+    /* THE META TEXT */
+    .content-box>div[style*="font-size: 1.2rem"] {
+        font-size: 0.95rem !important;
+        line-height: 1.6 !important;
+    }
+
+    .content-box p {
+        margin-bottom: 15px !important;
     }
 
     .server-ip {
@@ -449,21 +506,38 @@ h2 {
 
     /* GRIDS */
     .gallery-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-    }
-
-    .gallery-grid img {
-        height: 140px;
-    }
-
-    .features-grid {
         grid-template-columns: 1fr;
         gap: 15px;
     }
 
+    .gallery-grid img {
+        height: auto;
+        width: 100%;
+        margin-bottom: 5px;
+    }
+
+    .features-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 15px;
+        /* Reset horizontal scrolling adjustments */
+        overflow-x: visible;
+        padding-bottom: 0;
+        margin-left: 0;
+        margin-right: 0;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .features-grid::-webkit-scrollbar {
+        display: none;
+    }
+
     .feature-card {
         padding: 20px 15px;
+        min-width: 0;
+        flex: none;
+        scroll-snap-align: none;
     }
 
     .feature-icon {
@@ -481,13 +555,36 @@ h2 {
     }
 
     .team-grid {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 30px;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    /* Undo odd child centering */
+    .team-grid .card:last-child:nth-child(odd) {
+        grid-column: auto;
+        width: 100%;
+        margin: 0;
     }
 
     .card {
-        width: 40%;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .card img,
+    .card .placeholder {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 15px;
+    }
+
+    .card h3 {
+        font-size: 1.2rem;
+    }
+
+    .card p {
+        font-size: 0.9rem;
     }
 
     .feature-list {
@@ -552,9 +649,9 @@ h2 {
     }
 
     .content-box {
-        transform: translateY(-60px);
-        padding-top: 20px;
-        padding-bottom: 20px;
+        transform: translateY(-80px);
+        padding-top: 15px;
+        padding-bottom: 15px;
     }
 
     .server-ip {

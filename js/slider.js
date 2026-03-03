@@ -66,9 +66,12 @@ window.goToSlide = (logicalIndex) => {
     updateDots(logicalIndex + 1);
 };
 
-// SCROLL HANDLING
+// SCROLL HANDLING (Desktop only - on mobile, native scroll handles vertical)
 let isScrolling = false;
 window.addEventListener('wheel', (e) => {
+    // Skip on mobile to allow native vertical scrolling inside slides
+    if (window.innerWidth <= 768) return;
+
     if (isScrolling) return;
     isScrolling = true;
     setTimeout(() => { isScrolling = false; }, 800);
@@ -90,26 +93,37 @@ window.addEventListener('wheel', (e) => {
 // SWIPE SUPPORT
 let touchStartX = 0;
 let touchEndX = 0;
+let touchStartY = 0;
+let touchEndY = 0;
 
 window.addEventListener('touchstart', (e) => {
     touchStartX = e.changedTouches[0].screenX;
+    touchStartY = e.changedTouches[0].screenY;
 }, { passive: true });
 
 window.addEventListener('touchend', (e) => {
     touchEndX = e.changedTouches[0].screenX;
+    touchEndY = e.changedTouches[0].screenY;
     handleSwipe();
 }, { passive: true });
 
 function handleSwipe() {
     const threshold = 50;
-    if (touchEndX < touchStartX - threshold) {
+    const deltaX = touchEndX - touchStartX;
+    const deltaY = touchEndY - touchStartY;
+
+    // Only trigger slide change if gesture is predominantly horizontal
+    // This allows vertical scrolling to work naturally inside slides
+    if (Math.abs(deltaX) < Math.abs(deltaY)) return;
+
+    if (deltaX < -threshold) {
         // Swipe Left -> Next Slide
         if (currentIndex >= slideCount + 1) return;
         const nextIndex = currentIndex + 1;
         moveTrack(nextIndex);
         updateDots(nextIndex);
     }
-    if (touchEndX > touchStartX + threshold) {
+    if (deltaX > threshold) {
         // Swipe Right -> Prev Slide
         if (currentIndex <= 0) return;
         const prevIndex = currentIndex - 1;
